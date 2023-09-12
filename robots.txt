@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://avalonswanderer.github.io//sitemap.xml

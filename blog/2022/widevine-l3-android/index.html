@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Breaking Widevine L3 in Android | Gwendal  Patat</title>
+    <meta name="author" content="Gwendal  Patat" />
+    <meta name="description" content="" />
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/native.css" media="" id="highlight_theme_light" />
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="/assets/img/favicon.png"/>
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="https://avalonswanderer.github.io/blog/2022/widevine-l3-android/">
+    
+    <!-- Dark Mode -->
+    
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+
+    <!-- Header -->
+    <header>
+
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top">
+        <div class="container">
+          <a class="navbar-brand title font-weight-lighter" href="https://avalonswanderer.github.io//"><span class="font-weight-bold">Gwendal </span>Patat</a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+
+              <!-- About -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/">about</a>
+              </li>
+              
+              <!-- Blog -->
+              <li class="nav-item active">
+                <a class="nav-link" href="/blog/">blog<span class="sr-only">(current)</span></a>
+              </li>
+
+              <!-- Other pages -->
+              <li class="nav-item ">
+                <a class="nav-link" href="/publications/">publications</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/cv/">cv</a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="/teaching/">teaching</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <!-- Content -->
+    <div class="container mt-5">
+      <!-- _layouts/post.html -->
+
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Breaking Widevine L3 in Android</h1>
+    <p class="post-meta">April 6, 2022</p>
+    <p class="post-tags">
+      <a href="//blog/2022"> <i class="fas fa-calendar fa-sm"></i> 2022 </a>
+        ·  
+        <a href="//blog/tag/Widevine">
+          <i class="fas fa-hashtag fa-sm"></i> Widevine</a>  
+          <a href="//blog/tag/Android">
+          <i class="fas fa-hashtag fa-sm"></i> Android</a>  
+          <a href="//blog/tag/Digital%20Right%20Management">
+          <i class="fas fa-hashtag fa-sm"></i> Digital Right Management</a>  
+          <a href="//blog/tag/DRM">
+          <i class="fas fa-hashtag fa-sm"></i> DRM</a>  
+          <a href="//blog/tag/OTT">
+          <i class="fas fa-hashtag fa-sm"></i> OTT</a>  
+          
+
+    </p>
+  </header>
+
+  <article class="post-content">
+    <style>
+	.btn{padding: 5px 10px;}
+	h2{ margin-bottom: 4px; color:black}
+	h3{ margin-bottom: 4px; color:black}
+	p{ margin-top: 0px;}
+</style>
+
+<div style="text-align:center">
+    <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/widevine_l3_broken_logo-480.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/widevine_l3_broken_logo-800.webp"></source>
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/widevine_l3_broken_logo-1400.webp"></source>
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/widevine_l3_broken_logo.png" class="img-fluid" width="400px" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+
+  </picture>
+
+</figure>
+
+</div>
+
+<p>Widevine is a <strong>Digital Right Management (DRM)</strong> system owned by Google present in web browser, Android Smart TV, Android devices and more. Its purpose is to protect copyrighted media from piracy when received from an <strong>Over-The-Top (OTT)</strong> platform such as Netflix, Disney+ or PrimeVideo. This protection relies on proprietary code and protocol involving multiple cryptographic operations and obfuscation to hide its internal mechanisms.</p>
+
+<p>Our attack focuses on Widevine in Android devices relying on software for content protection. It can <strong>recover the device unique cryptographic key</strong>, allowing an attacker to decrypt every future media received from an OTT.</p>
+
+<h2 id="attack-overview">Attack Overview</h2>
+
+<p>Widevine can run in two modes: L1 when backed up by hardware protection, and L3 when relying only on software. In Android, the L3 software-only one relies exclusively on obfuscation to protect its cryptographic assets, starting from its Root-Of-Trust (RoT) named the <em>Device Key</em> up to the <em>Content Key</em> used to decrypt a specific media. This implementation lies in the vendor specific Widevine library.</p>
+
+<p>By inspecting the Widevine library in L3 mode, we can observe the obfuscated flow of the program and bypass this protection by recovering the RoT from the process memory based solely on its format due to lack of protection. Indeed, the RoT is embedded in a structure called the Keybox. By reverse engineering its structure and understanding its fields, we were able to search for its pattern containing a magic number. Indeed, due to an <strong>insecure storage of sensitive information</strong> within the memory of the process, we were able to trivially bypass the obfuscation by <strong>dumping the keybox during execution</strong>.</p>
+
+<p>With the RoT, it was then possible to monitor and dump exchange messages during execution to recover the device certificate and <strong>mimic the complete key ladder leading up to media decryption</strong>.</p>
+
+<h2 id="demo">Demo</h2>
+
+<p>The demo below shows the recovery of the <em>Content Key</em> starting from the device certificate during media playback.</p>
+
+<center>
+	<video width="640" height="480" controls="">
+	  	<source src="../../../assets/video/widevine_video.mp4" type="video/mp4"></source>
+		Your browser does not support the video tag.
+	</video> 
+</center>
+
+<h2 id="full-technical-paper">Full Technical Paper</h2>
+
+<ul>
+  <li>
+<strong>Exploring Widevine for Fun and Profit</strong>, <em>Gwendal Patat</em>, Mohamed Sabt and Pierre-Alain Fouque, 16th Workshop on Offensive Technologies (<a href="https://colinoflynn.github.io/WOOT22/" target="_blank" rel="noopener noreferrer">WOOT</a>) 2022, San Francisco, California, USA.
+    <ul>
+      <li><a href="../../../assets/pdf/exploring_widevine.pdf" class="btn">Article</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="tools">Tools</h2>
+
+<p><a href="https://github.com/Avalonswanderer/wideXtractor" target="_blank" rel="noopener noreferrer"><strong>WideXtractor</strong></a> traces the Media DRM process on Android and hooks the Widevine library in use. The _oeccXX (from _oecc01 to _oecc48) functions are then hooked to dump important buffers, return values, and arguments, for inspection. Once WideXtractor is attached, using an OTT app such as Netflix will start the usage of the Widevine CDM and log the control flow.</p>
+
+<p><a href="https://github.com/Avalonswanderer/widevinel3_Android_PoC" target="_blank" rel="noopener noreferrer"><strong>Our Proof-of-Concept (PoC)</strong></a> is a Widevine L3 script for Android Keybox Recovery, Content Key dump and Netflix Media Download.</p>
+
+<h2 id="qa">Q&amp;A</h2>
+
+<h3 id="what-is-a-drm">What is a DRM?</h3>
+
+<p>DRM or Digital Right Management is a technology designed to prevent piracy of digital content. It assures that the protected assets cannot be accessed by unauthorized consumers to avoid illegal use or redistribution.</p>
+
+<h3 id="where-is-it">Where is it?</h3>
+
+<p>The Widevine DRM can be found on multiple devices, including but not limited to: Android Smart TV, Android phones, PlayStation consoles, Google Chromecast, and web browsers.</p>
+
+<h3 id="do-ott-drms-are-the-same-as-video-game-drms">Do OTT DRMs are the same as Video game DRMs?</h3>
+
+<p>DRMs used by streaming services do not work in the same way as video game DRMs. Media protection relies merely only on content encryption, while watermarking, traitor tracing and partial encryption can apply to video games.</p>
+
+<h3 id="as-a-user-am-i-vulnerable">As a user, am I vulnerable?</h3>
+<p>Regular users should not worry about this vulnerability. Indeed, here regular users are more likely to be the actual attackers against streaming platforms.</p>
+
+<h3 id="who-is-vulnerable">Who is vulnerable?</h3>
+<p>For the keybox recovery, Android implementation of the Wideine L3 such as in the Nexus 5 are vulnerable but the exhaustive scope is unknown.</p>
+
+<h3 id="why-not-just-record-the-screen">Why not just record the screen?</h3>
+
+<p>Hardware protections are being used for secure video streams preventing recording. In addition, screen recording is largely slower since an attacker needs 2h to recover a 2h long movie. Using our PoC it is possible to download files and decrypt them in seconds.</p>
+
+<h3 id="is-it-easy-to-reproduce">Is it easy to reproduce?</h3>
+
+<p>Yes, using our <a href="https://github.com/Avalonswanderer/widevinel3_Android_PoC" target="_blank" rel="noopener noreferrer">PoC</a> if you have a vulnerable rooted device.</p>
+
+<h3 id="does-it-work-on-widevine-l1">Does it work on Widevine L1?</h3>
+
+<p>No. Nevertheless, our tool <a href="https://github.com/Avalonswanderer/wideXtractor" target="_blank" rel="noopener noreferrer">WideXtractor</a> can also be used on Widevine L1 in Android, to monitor the control flow and recover exchange messages.</p>
+
+<h3 id="does-it-affect-browser-implementations">Does it affect browser implementations?</h3>
+<p>This PoC mainly focus on Widevine in Android device, therefore it cannot be used on browser.</p>
+
+<h3 id="does-this-attack-raise-legal-issues">Does this attack raise legal issues?</h3>
+
+<p>Yes, the usage of our tools for non-educational purpose is illegal. For instance in the United States, the <em>Digital Millennium Copyright Act (DMCA)</em> with the DMCA’s 1201 clause makes it illegal to circumvent controls preventing access to copyrighted material. Restrictions have been partially lifted recently in October 2018 by the American Library of Congress and the Copyright Office. Therefore, in theory, researchers can now freely investigate and publish security flaws on DRM solutions. In Europe, quite the same law is applied with the <em>European Union Copyright Directive (EUCD)</em>.</p>
+
+<h3 id="have-vendors-responded-to-this-vulnerability">Have vendors responded to this vulnerability?</h3>
+<p>Our findings have been timely reported to all concerned parties following their responsible disclosure process. Google assigned the CVE ID <a href="https://www.cve.org/CVERecord?id=CVE-2021-0639" target="_blank" rel="noopener noreferrer">‘CVE-2021-0639’</a> for us linked to the <a href="https://source.android.com/security/bulletin/2021-08-01#widevine" target="_blank" rel="noopener noreferrer">Android Security Bulletin August 2021</a>.</p>
+
+<h3 id="how-can-i-contact-you">How can I contact you?</h3>
+
+<p>You can contact me via mail or twitter:</p>
+
+<ul>
+  <li>Gwendal Patat, University of Rennes 1, France, <a href="https://twitter.com/avalonswanderer" target="_blank" rel="noopener noreferrer">@avalonswanderer</a>, gwendal.patat@irisa.fr</li>
+</ul>
+
+  </article>
+
+</div>
+
+    </div>
+
+    <!-- Footer -->    
+    <footer class="fixed-bottom">
+      <div class="container mt-0">
+        © Copyright 2023 Gwendal  Patat. 
+      </div>
+    </footer>
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha256-fgLAgv7fyCGopR/gBNq2iW3ZKIdqIcyshnUULC4vex8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script defer src="/assets/js/masonry.js" type="text/javascript"></script>
+    
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js"></script><!-- Load Common JS -->
+  <script defer src="/assets/js/common.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams'
+      }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    
+  </body>
+</html>
