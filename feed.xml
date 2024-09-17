@@ -1,4 +1,236 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://avalonswanderer.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://avalonswanderer.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-08-28T11:21:48+02:00</updated><id>https://avalonswanderer.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">Breaking Widevine L3 in Android</title><link href="https://avalonswanderer.github.io/blog/2022/widevine-l3-android/" rel="alternate" type="text/html" title="Breaking Widevine L3 in Android" /><published>2022-04-06T00:00:00+02:00</published><updated>2022-04-06T00:00:00+02:00</updated><id>https://avalonswanderer.github.io/blog/2022/widevine-l3-android</id><content type="html" xml:base="https://avalonswanderer.github.io/blog/2022/widevine-l3-android/"><![CDATA[<style>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://avalonswanderer.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://avalonswanderer.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-09-17T14:37:46+02:00</updated><id>https://avalonswanderer.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">Writing a keygen for a 20+ year old game</title><link href="https://avalonswanderer.github.io/blog/2024/keygen2000s/" rel="alternate" type="text/html" title="Writing a keygen for a 20+ year old game" /><published>2024-09-17T00:00:00+02:00</published><updated>2024-09-17T00:00:00+02:00</updated><id>https://avalonswanderer.github.io/blog/2024/keygen2000s</id><content type="html" xml:base="https://avalonswanderer.github.io/blog/2024/keygen2000s/"><![CDATA[<style>
+	.btn{padding: 5px 10px;}
+	h2{ margin-bottom: 4px; color:black}
+	h3{ margin-bottom: 4px; color:black}
+	p{ margin-top: 0px;}
+    .highlight {
+            background-color: #3fd9ff;
+            font-weight: bold;
+        }
+    .highlight2 {
+            background-color: #90ee80;
+            font-weight: bold;
+        }
+</style>
+
+<div style="text-align:center">
+    <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/teufel-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/teufel-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/teufel-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/teufel.png" class="img-fluid" width="200px" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+<p align="center">
+<iframe width="40%" height="50" scrolling="no" frameborder="no" allow="autoplay" src="../../../assets/audio/keygen2000s.mp3"></iframe>
+</p>
+
+<h3 id="introduction">Introduction</h3>
+<p>The early 2000s were a simpler time: chunky monitors, physical game CDs, and of course, serial keys printed on those jewel cases that always seemed to go missing. Now, years later, you’ve got an old favorite game in your hands but no way to get past the long-forgotten DRM. That’s where reverse engineering and keygens come in handy.</p>
+
+<p>In this post, we’ll walk through how we can reverse engineered the serial verification of a 20+ year-old game. It’s a mix of nostalgia and technical exploration, digging into how these protections were built and, of course, how we can bypass them today. Just a reminder-this is for educational purposes only, meant to give insight into the workings of DRM from an era gone by.</p>
+
+<h3 id="locate-the-serial-key-verification-function">Locate the serial key verification function</h3>
+
+<p>Let’s dive straight into the technical process. The goal here is to identify the function that verifies the game’s serial key. Our goal here was to track the serial key’s handling in memory during the installation process. To do this, I launched the <em>INSTALL.exe</em> from the mounted ISO using <em>x32dbg</em> for live debugging. When launching the install CD, we can reach the following window expecting our serial key to proceed.</p>
+
+<div style="text-align:center">
+    <figure>
+
+  <picture>
+    
+    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/keygen2000s/img/%7B3C522A92-87D4-49DC-82A6-7EE219AFC093%7D-480.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/keygen2000s/img/%7B3C522A92-87D4-49DC-82A6-7EE219AFC093%7D-800.webp" />
+    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/keygen2000s/img/%7B3C522A92-87D4-49DC-82A6-7EE219AFC093%7D-1400.webp" />
+    
+
+    <!-- Fallback to the original file -->
+    <img src="/assets/img/keygen2000s/img/%7B3C522A92-87D4-49DC-82A6-7EE219AFC093%7D.png" class="img-fluid" width="450px" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+
+  </picture>
+
+</figure>
+
+</div>
+
+<p>Once the serial key window appeared, I navigated to the Handles section, refreshed the list, and located the “OK” button. I then set a breakpoint on the <em>WM_LBUTTONUP</em> event, which triggers when the “OK” button is clicked. This allowed me to intercept the moment the user confirms their serial key input.</p>
+
+<p>From here, I followed the code execution as the installer processed the serial key. Chunk by chunk, the key was copied into memory until I reached the critical function at <em>0x0041B1EB</em>. Here, I could see the serial key being checked against the expected values, suggesting that this function plays a central role in the verification process.</p>
+
+<p>With this information, I opened the function at <em>0x0041B1EB</em> in Ghidra for deeper analysis of the serial verification logic.</p>
+
+<h3 id="reverse-the-serial-checking-algorithm">Reverse the serial checking algorithm</h3>
+<p>Now that we’ve located the key verification function, it’s time to understand how it works. We’ll look at the instructions responsible for comparing the input with the expected values. The key takeaway is figuring out the logic behind how the installer decides whether a serial key is legitimate or not.</p>
+
+<h4 id="trivial-bypass">Trivial Bypass</h4>
+<p>As we can expect, the <em>0x0041B1EB</em> needs to return 1 for success. A quick-and-dirty way to bypass the serial check entirely is to force the function to always return such value. This simple assembly tweak is a classic example of patching, but it’s not the fun that we’re looking for.</p>
+
+<div class="language-nasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">_0041B1EB:</span>  <span class="nf">mov</span> <span class="nb">rax</span><span class="p">,</span> <span class="mi">1</span>
+            <span class="nf">ret</span>
+</code></pre></div></div>
+
+<h4 id="serial-check-logic">Serial Check Logic</h4>
+
+<p>Now, we’re going to take a deeper dive into the inner workings of the serial key validation algorithm. We’ll break down the steps involved in processing the key: from character transformations to bitmask calculations, and how each part of the serial key gets validated. This will lay the foundation for what we need to know to write a valid key generator later on.</p>
+
+<p><strong>Serial Key Charset:</strong></p>
+
+<p>Based on the input window and the actual code, we can see that each serial key needs to be 16 characters long. These characters are compared to a hardcoded lookup table filled with 0xff values, except for 24 positions with values ranging from 0x0 to 0x17. If the lookup table, indexed by the ASCII character value, returns something lower than 0x18, the character is considered valid.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lookup_table</span> <span class="o">=</span> <span class="sa">b</span><span class="s">'</span><span class="se">\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\xff\x01\xff\x02\x03\x04\x05\xff\xff\xff\xff\xff\xff\xff\xff\x06\x07\x08\x09\x0a\x0b\x0c\xff\x0d\x0e\xff\x0f\x10\xff\x11\xff\x21\xff\x13\xff\x14\x15\x16\xff\x17\xff\xff\xff\xff\xff\xff\xff\x06\x07\x08\x09\x0a\x0b\x0c\xff\x0d\x0e\xff\x0f\x10\xff\x11\xff\x12\xff\x13\xff\x14\x15\x16\xff\x17\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff</span><span class="s">'</span>
+</code></pre></div></div>
+
+<p>By checking all valid positions, we can see that the character set for our serial key needs to come from the following (both lower and upper case letters are valid):</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="o">,</span> <span class="no">B</span><span class="o">,</span> <span class="no">C</span><span class="o">,</span> <span class="no">D</span><span class="o">,</span> <span class="no">E</span><span class="o">,</span> <span class="no">F</span><span class="o">,</span> <span class="no">G</span><span class="o">,</span> <span class="no">H</span><span class="o">,</span> <span class="no">J</span><span class="o">,</span> <span class="no">K</span><span class="o">,</span> <span class="no">M</span><span class="o">,</span> <span class="no">N</span><span class="o">,</span> <span class="no">P</span><span class="o">,</span> <span class="no">R</span><span class="o">,</span> <span class="no">T</span><span class="o">,</span> <span class="no">V</span><span class="o">,</span> <span class="no">W</span><span class="o">,</span> <span class="no">X</span><span class="o">,</span> <span class="no">Z</span> 
+</code></pre></div></div>
+
+<p><strong>Transform and Bitmask:</strong></p>
+
+<p>After the charset verification, the serial key is transformed and a bitmask is created. This bitmask helps track any overflows that occur during the transformation process and is essential for validating the key.</p>
+
+<p>To begin with, we examine the serial key two characters at a time. For each pair, we look up their corresponding values from the lookup_table. We then calculate a combined value by multiplying the value of the first character by 0x18 and adding the value of the second character.</p>
+
+<p>If the computed value exceeds 0xff, this indicates an overflow. To handle this, we subtract 0x100 from the computed value and set a bit in the bitmask to mark that an overflow occurred. Each bit in the 8-bit bitmask corresponds to a position in the serial key.</p>
+
+<p>After adjusting for overflow, we convert the adjusted value back into hexadecimal characters. The transformed characters are then updated in the serial key. Additionally, we shift the bitmask left by one position to prepare for processing the next pair of characters.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">transform_key</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span> 
+        <span class="n">first</span> <span class="o">=</span> <span class="n">lookup_table</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span>
+        <span class="n">second</span> <span class="o">=</span> <span class="n">lookup_table</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])]</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">first</span> <span class="o">*</span> <span class="mh">0x18</span> <span class="o">+</span> <span class="n">second</span>
+        <span class="k">if</span> <span class="p">(</span><span class="mh">0xff</span> <span class="o">&lt;</span> <span class="n">val</span><span class="p">):</span>
+            <span class="n">val</span> <span class="o">-=</span> <span class="mh">0x100</span>
+            <span class="n">bitmask</span> <span class="o">|=</span> <span class="n">bit</span>
+        <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">hexChar</span><span class="p">(</span><span class="n">val</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="c1"># hexChar: e.g., 0xf -&gt; "F"
+</span>        <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">hexChar</span><span class="p">(</span><span class="n">val</span> <span class="o">%</span> <span class="mh">0x10</span><span class="p">)</span>
+        <span class="n">bit</span> <span class="o">=</span> <span class="n">bit</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">serial</span><span class="p">,</span> <span class="n">bitmask</span>
+</code></pre></div></div>
+
+<p><strong>Checksum:</strong></p>
+
+<p>Following the bitmask, a checksum is computed on the new serial key.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">checksum</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
+    <span class="n">checksum</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">serial</span><span class="p">:</span>
+        <span class="n">shifted_mask</span> <span class="o">=</span> <span class="n">checksum</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
+        <span class="n">checksum</span> <span class="o">+=</span> <span class="n">shifted_mask</span> <span class="o">^</span> <span class="n">hexCharValue</span><span class="p">(</span><span class="n">current_char</span><span class="p">)</span> <span class="c1"># e.g., "F" -&gt; 0xf
+</span>    <span class="k">return</span> <span class="n">checksum</span> <span class="o">&amp;=</span> <span class="mh">0xff</span>
+</code></pre></div></div>
+<p>This basic checksum can be seen as the following sequence:</p>
+
+\[X_0 = 3\]
+
+\[X_i = 2X_{i-1} \oplus a_i + X_{i-1}\]
+
+<p>With \(a_i\) the value represented by the current char of the serial key. However, only the last byte of the resul will be compared to the previous bitmask, making it a simple 256 bits checksum. If the check is valid, we enter a shuffle operation.</p>
+
+<p><strong>Shuffle:</strong></p>
+
+<p>At this point, the serial key will undergo a permutation. This shuffle operation might initially appear to swap the all key, but it actually performs a really straightforward transformation. The purpose of this operation is to rearrange the serial key, moving the middle bytes to the front and end of the key.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">computed_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mh">0x11</span> <span class="o">+</span> <span class="mi">7</span><span class="p">)</span> <span class="o">%</span> <span class="mh">0x10</span><span class="p">;</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">serial</span><span class="p">[</span><span class="n">computed_index</span><span class="p">];</span>
+        <span class="n">serial</span><span class="p">[</span><span class="n">computed_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">serial</span>
+</code></pre></div></div>
+<p>To illustrate, consider the following example with a dummy serial key:</p>
+<div align="center">
+    <p><b>Original:</b> 2244 6<span class="highlight">67</span><span class="highlight2">7 8</span>899 BBCC</p>
+    <p><b>Shuffled:</b> <span class="highlight">67</span>22 4468 99BB CC<span class="highlight2">78</span></p>
+</div>
+
+<p>In this shuffled version, you’ll notice that the middle bytes have been moved to the front and end of the key.</p>
+
+<p><strong>Magic Mask:</strong></p>
+
+<p>The magic mask operation is a crucial step in transforming the serial key by applying a self-modifying mask to certain characters. This operation uses a hardcoded magic number and processes each character of the serial key based on its value.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">magic_mask</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
+    <span class="n">magic_number</span> <span class="o">=</span> <span class="mh">0x13ac9741</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0xf</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s">'8'</span><span class="p">):</span>
+            <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">^</span> <span class="n">magic_number</span> <span class="o">&amp;</span> <span class="mi">7</span><span class="p">)</span>
+            <span class="n">magic_number</span> <span class="o">=</span> <span class="n">magic_number</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s">'A'</span><span class="p">):</span>
+            <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">^</span> <span class="n">i</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">serial</span>
+</code></pre></div></div>
+
+<p>The function starts with a predefined magic number, 0x13ac9741, which is used to transform the characters in the serial key. Here’s a step-by-step breakdown of the process:</p>
+
+<ul>
+  <li>Iteration: The function iterates from the end of the serial key (i = 15) to the beginning (i = 0), processing each character.</li>
+  <li>Character Transformation:
+    <ul>
+      <li>If the character is less than ‘8’, it undergoes a transformation using the magic number. Specifically, the character is XOR-ed with the least significant 3 bits of the magic number, and then the magic number is right-shifted by 3 bits for the next iteration.</li>
+      <li>If the character is less than ‘A’, it is transformed by XOR-ing it with the least significant bit of the index.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>This approach modifies the characters based on their value and position in the key, applying a dynamic transformation using the magic number. The result is a serial key where certain characters have been altered based on the magic mask logic.</p>
+
+<p><strong>Serial Check:</strong></p>
+
+<p>The actual serial key validation combines all the processes we’ve explored: transformations, checksums, shuffles, and masks. By understanding this check in detail, we can effectively replicate it to ensure that our keygen generates valid keys. The only remaining check is to see if new serial key start with “06” or “07”.</p>
+
+<p>Here’s the check_serial function that encapsulates the entire verification process:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">check_serial</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
+    <span class="n">new_serial</span><span class="p">,</span> <span class="n">computed_bitmask</span> <span class="o">=</span> <span class="n">transform_key</span><span class="p">(</span><span class="n">serial</span><span class="p">)</span>
+    <span class="n">check</span> <span class="o">=</span> <span class="n">checksum</span><span class="p">(</span><span class="n">new_serial</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">check</span> <span class="o">==</span> <span class="n">computed_bitmask</span><span class="p">):</span>
+        <span class="n">shuffled_serial</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">new_serial</span><span class="p">)</span>
+        <span class="n">masked_serial</span> <span class="o">=</span> <span class="n">magic_mask</span><span class="p">(</span><span class="n">shuffled_serial</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">masked_serial</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">'0'</span> <span class="ow">and</span> <span class="n">masked_serial</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">'6'</span> <span class="ow">or</span> <span class="n">masked_serial</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">'7'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<p><em>Additional note:</em> For the game’s expansion, the same key verification mechanism is used but with a slight variation, the characters ‘6’ and ‘7’ are replaced with ‘N’ and ‘C’.</p>
+
+<h3 id="writing-the-keygen">Writing the keygen</h3>
+<p>Finally, with all the algorithm pieces in hand, we walk through writing the actual keygen.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">gen_serial</span><span class="p">():</span>
+    <span class="n">charset</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">'2'</span><span class="p">,</span> <span class="s">'4'</span><span class="p">,</span> <span class="s">'6'</span><span class="p">,</span> <span class="s">'7'</span><span class="p">,</span> <span class="s">'8'</span><span class="p">,</span> <span class="s">'9'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'C'</span><span class="p">,</span>
+    <span class="s">'D'</span><span class="p">,</span> <span class="s">'E'</span><span class="p">,</span> <span class="s">'F'</span><span class="p">,</span> <span class="s">'G'</span><span class="p">,</span> <span class="s">'H'</span><span class="p">,</span> <span class="s">'J'</span><span class="p">,</span> <span class="s">'K'</span><span class="p">,</span> <span class="s">'M'</span><span class="p">,</span> 
+    <span class="s">'N'</span><span class="p">,</span> <span class="s">'P'</span><span class="p">,</span> <span class="s">'R'</span><span class="p">,</span> <span class="s">'T'</span><span class="p">,</span> <span class="s">'V'</span><span class="p">,</span> <span class="s">'W'</span><span class="p">,</span> <span class="s">'X'</span><span class="p">,</span> <span class="s">'Z'</span><span class="p">]</span>
+    <span class="n">serial</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
+        <span class="n">serial</span> <span class="o">+=</span> <span class="n">charset</span><span class="p">[</span><span class="n">random</span><span class="p">.</span><span class="n">randrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">charset</span><span class="p">))]</span>
+    <span class="k">return</span> <span class="n">serial</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">serial</span> <span class="o">=</span> <span class="n">gen_serial</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">check_serial</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"Success!</span><span class="se">\n</span><span class="s">CD key:</span><span class="se">\t</span><span class="s">"</span> <span class="o">+</span> <span class="n">serial</span><span class="p">)</span>
+            <span class="k">break</span>
+</code></pre></div></div>
+
+<h3 id="conclusion">Conclusion</h3>
+<p>In this exploration, we’ve tackled the challenge of an old game’s DRM system using a practical approach. By analyzing the serial key verification algorithm, we’ve gained insight into its inner workings and used this understanding to develop a keygen that mimics the original check.</p>
+
+<p>Our keygen works by simulating the validation process and employing a brute-force strategy to randomly generate and test serial keys until it finds one that succeeds. This method highlights the importance of comprehending the verification logic and demonstrates a straightforward way to bypass the game’s protection.</p>
+
+<p>Thank you for joining me on this exploration.</p>
+
+<h4 id="disclaimer">Disclaimer</h4>
+<p>This article is intended for educational purposes only. The author is not responsible for any damages, unauthorized access, or illegal activities that may arise from this content. This demonstration is a product of research driven by a passion for cybersecurity.</p>]]></content><author><name></name></author><category term="keygen" /><category term="reverse engineering" /><category term="DRM" /><category term="old games" /><summary type="html"><![CDATA[Serial bypass and keygen]]></summary></entry><entry><title type="html">Breaking Widevine L3 in Android</title><link href="https://avalonswanderer.github.io/blog/2022/widevine-l3-android/" rel="alternate" type="text/html" title="Breaking Widevine L3 in Android" /><published>2022-04-06T00:00:00+02:00</published><updated>2022-04-06T00:00:00+02:00</updated><id>https://avalonswanderer.github.io/blog/2022/widevine-l3-android</id><content type="html" xml:base="https://avalonswanderer.github.io/blog/2022/widevine-l3-android/"><![CDATA[<style>
 	.btn{padding: 5px 10px;}
 	h2{ margin-bottom: 4px; color:black}
 	h3{ margin-bottom: 4px; color:black}
