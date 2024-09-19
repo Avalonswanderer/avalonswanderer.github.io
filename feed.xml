@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://avalonswanderer.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://avalonswanderer.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-09-18T09:43:12+02:00</updated><id>https://avalonswanderer.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">Writing a keygen for a 20+ year old game</title><link href="https://avalonswanderer.github.io/blog/2024/keygen2000s/" rel="alternate" type="text/html" title="Writing a keygen for a 20+ year old game" /><published>2024-09-17T00:00:00+02:00</published><updated>2024-09-17T00:00:00+02:00</updated><id>https://avalonswanderer.github.io/blog/2024/keygen2000s</id><content type="html" xml:base="https://avalonswanderer.github.io/blog/2024/keygen2000s/"><![CDATA[<style>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://avalonswanderer.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://avalonswanderer.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-09-19T09:21:06+02:00</updated><id>https://avalonswanderer.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">Writing a keygen for a 20+ year old game</title><link href="https://avalonswanderer.github.io/blog/2024/keygen2000s/" rel="alternate" type="text/html" title="Writing a keygen for a 20+ year old game" /><published>2024-09-17T00:00:00+02:00</published><updated>2024-09-17T00:00:00+02:00</updated><id>https://avalonswanderer.github.io/blog/2024/keygen2000s</id><content type="html" xml:base="https://avalonswanderer.github.io/blog/2024/keygen2000s/"><![CDATA[<style>
 	.btn{padding: 5px 10px;}
 	h2{ margin-bottom: 4px; color:black}
 	h3{ margin-bottom: 4px; color:black}
@@ -204,6 +204,13 @@
 <h3 id="writing-the-keygen">Writing the keygen</h3>
 <p>Finally, with all the algorithm pieces in hand, we walk through writing the actual keygen.</p>
 
+<p>As a recap, here are all the properties our serial needs to match:</p>
+<ul>
+  <li>It must be 16 characters long, using only the defined charset.</li>
+  <li>The checksum of its transformation must match the overflow bitmask.</li>
+  <li>After shuffling and applying the magic number mask, it must start with “06” or “07”.</li>
+</ul>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">gen_serial</span><span class="p">():</span>
     <span class="n">charset</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s">'2'</span><span class="p">,</span> <span class="s">'4'</span><span class="p">,</span> <span class="s">'6'</span><span class="p">,</span> <span class="s">'7'</span><span class="p">,</span> <span class="s">'8'</span><span class="p">,</span> <span class="s">'9'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'C'</span><span class="p">,</span>
@@ -219,8 +226,9 @@
         <span class="n">serial</span> <span class="o">=</span> <span class="n">gen_serial</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">check_serial</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
             <span class="k">print</span><span class="p">(</span><span class="s">"Success!</span><span class="se">\n</span><span class="s">CD key:</span><span class="se">\t</span><span class="s">"</span> <span class="o">+</span> <span class="n">serial</span><span class="p">)</span>
-            <span class="k">break</span>
 </code></pre></div></div>
+
+<p>With this, our keygen can now successfully generate valid serial keys!</p>
 
 <h3 id="conclusion">Conclusion</h3>
 <p>In this exploration, we’ve tackled the challenge of an old game’s DRM system using a practical approach. By analyzing the serial key verification algorithm, we’ve gained insight into its inner workings and used this understanding to develop a keygen that mimics the original check.</p>

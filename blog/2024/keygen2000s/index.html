@@ -318,6 +318,13 @@
 <h3 id="writing-the-keygen">Writing the keygen</h3>
 <p>Finally, with all the algorithm pieces in hand, we walk through writing the actual keygen.</p>
 
+<p>As a recap, here are all the properties our serial needs to match:</p>
+<ul>
+  <li>It must be 16 characters long, using only the defined charset.</li>
+  <li>The checksum of its transformation must match the overflow bitmask.</li>
+  <li>After shuffling and applying the magic number mask, it must start with “06” or “07”.</li>
+</ul>
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">gen_serial</span><span class="p">():</span>
     <span class="n">charset</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s">'2'</span><span class="p">,</span> <span class="s">'4'</span><span class="p">,</span> <span class="s">'6'</span><span class="p">,</span> <span class="s">'7'</span><span class="p">,</span> <span class="s">'8'</span><span class="p">,</span> <span class="s">'9'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'C'</span><span class="p">,</span>
@@ -333,8 +340,9 @@
         <span class="n">serial</span> <span class="o">=</span> <span class="n">gen_serial</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">check_serial</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
             <span class="k">print</span><span class="p">(</span><span class="s">"Success!</span><span class="se">\n</span><span class="s">CD key:</span><span class="se">\t</span><span class="s">"</span> <span class="o">+</span> <span class="n">serial</span><span class="p">)</span>
-            <span class="k">break</span>
 </code></pre></div></div>
+
+<p>With this, our keygen can now successfully generate valid serial keys!</p>
 
 <h3 id="conclusion">Conclusion</h3>
 <p>In this exploration, we’ve tackled the challenge of an old game’s DRM system using a practical approach. By analyzing the serial key verification algorithm, we’ve gained insight into its inner workings and used this understanding to develop a keygen that mimics the original check.</p>
