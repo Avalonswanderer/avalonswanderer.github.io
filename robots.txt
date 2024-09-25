@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://avalonswanderer.github.io/sitemap.xml
+Sitemap: http://0.0.0.0:8080/sitemap.xml

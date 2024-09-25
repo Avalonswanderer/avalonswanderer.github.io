@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.1">Jekyll</generator><link href="https://avalonswanderer.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://avalonswanderer.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-09-19T09:37:57+02:00</updated><id>https://avalonswanderer.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">Writing a keygen for a 20+ year old game</title><link href="https://avalonswanderer.github.io/blog/2024/keygen2000s/" rel="alternate" type="text/html" title="Writing a keygen for a 20+ year old game" /><published>2024-09-17T00:00:00+02:00</published><updated>2024-09-17T00:00:00+02:00</updated><id>https://avalonswanderer.github.io/blog/2024/keygen2000s</id><content type="html" xml:base="https://avalonswanderer.github.io/blog/2024/keygen2000s/"><![CDATA[<style>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://0.0.0.0:8080/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:8080/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-09-25T07:33:43+00:00</updated><id>http://0.0.0.0:8080/feed.xml</id><title type="html">blank</title><subtitle></subtitle><entry><title type="html">Writing a keygen for a 20+ year old game</title><link href="http://0.0.0.0:8080/blog/2024/keygen2000s/" rel="alternate" type="text/html" title="Writing a keygen for a 20+ year old game" /><published>2024-09-17T00:00:00+00:00</published><updated>2024-09-17T00:00:00+00:00</updated><id>http://0.0.0.0:8080/blog/2024/keygen2000s</id><content type="html" xml:base="http://0.0.0.0:8080/blog/2024/keygen2000s/"><![CDATA[<style>
 	.btn{padding: 5px 10px;}
-	h2{ margin-bottom: 4px; color:black}
-	h3{ margin-bottom: 4px; color:black}
+	h2{ margin-bottom: 4px;}
+	h3{ margin-bottom: 4px;}
 	p{ margin-top: 0px;}
-    .highlight {
+    .highlight3 {
             background-color: #3fd9ff;
             font-weight: bold;
         }
@@ -14,20 +14,24 @@
 </style>
 
 <div style="text-align:center">
-    <figure>
+    
 
+
+
+<figure>
   <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
     
-    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/teufel-480.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/teufel-800.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/teufel-1400.webp" />
+      <source class="responsive-img-srcset" srcset="/assets/img/teufel.png" sizes="95vw" />
     
-
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/teufel.png" class="img-fluid" width="200px" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
-
+    <img src="/assets/img/teufel.png" class="img-fluid" width="200px" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
   </picture>
 
+  
 </figure>
 
 </div>
@@ -45,20 +49,24 @@
 <p>Let’s dive straight into the technical process. The goal here is to identify the function that verifies the game’s serial key. Our goal here was to track the serial key’s handling in memory during the installation process. To do this, I launched the <em>INSTALL.exe</em> from the mounted ISO using <em>x32dbg</em> for live debugging. When launching the install CD, we can reach the following window expecting our serial key to proceed.</p>
 
 <div style="text-align:center">
-    <figure>
+    
 
+
+
+<figure>
   <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
     
-    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/keygen2000s/img/%7B3C522A92-87D4-49DC-82A6-7EE219AFC093%7D-480.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/keygen2000s/img/%7B3C522A92-87D4-49DC-82A6-7EE219AFC093%7D-800.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/keygen2000s/img/%7B3C522A92-87D4-49DC-82A6-7EE219AFC093%7D-1400.webp" />
+      <source class="responsive-img-srcset" srcset="/assets/img/keygen2000s/img/%7B3C522A92-87D4-49DC-82A6-7EE219AFC093%7D.png" sizes="95vw" />
     
-
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/keygen2000s/img/%7B3C522A92-87D4-49DC-82A6-7EE219AFC093%7D.png" class="img-fluid" width="450px" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
-
+    <img src="/assets/img/keygen2000s/img/%7B3C522A92-87D4-49DC-82A6-7EE219AFC093%7D.png" class="img-fluid" width="450px" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
   </picture>
 
+  
 </figure>
 
 </div>
@@ -87,7 +95,7 @@
 
 <p>Based on the input window and the actual code, we can see that each serial key needs to be 16 characters long. These characters are compared to a hardcoded lookup table filled with 0xff values, except for 24 positions with values ranging from 0x0 to 0x17. If the lookup table, indexed by the ASCII character value, returns something lower than 0x18, the character is considered valid.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lookup_table</span> <span class="o">=</span> <span class="sa">b</span><span class="s">'</span><span class="se">\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\xff\x01\xff\x02\x03\x04\x05\xff\xff\xff\xff\xff\xff\xff\xff\x06\x07\x08\x09\x0a\x0b\x0c\xff\x0d\x0e\xff\x0f\x10\xff\x11\xff\x21\xff\x13\xff\x14\x15\x16\xff\x17\xff\xff\xff\xff\xff\xff\xff\x06\x07\x08\x09\x0a\x0b\x0c\xff\x0d\x0e\xff\x0f\x10\xff\x11\xff\x12\xff\x13\xff\x14\x15\x16\xff\x17\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff</span><span class="s">'</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lookup_table</span> <span class="o">=</span> <span class="sa">b</span><span class="sh">'</span><span class="se">\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\x00\xff\x01\xff\x02\x03\x04\x05\xff\xff\xff\xff\xff\xff\xff\xff\x06\x07\x08\x09\x0a\x0b\x0c\xff\x0d\x0e\xff\x0f\x10\xff\x11\xff\x21\xff\x13\xff\x14\x15\x16\xff\x17\xff\xff\xff\xff\xff\xff\xff\x06\x07\x08\x09\x0a\x0b\x0c\xff\x0d\x0e\xff\x0f\x10\xff\x11\xff\x12\xff\x13\xff\x14\x15\x16\xff\x17\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff</span><span class="sh">'</span>
 </code></pre></div></div>
 
 <p>By checking all valid positions, we can see that the character set for our serial key needs to come from the following (both lower and upper case letters are valid):</p>
@@ -105,15 +113,15 @@
 <p>After adjusting for overflow, we convert the adjusted value back into hexadecimal characters. The transformed characters are then updated in the serial key. Additionally, we shift the bitmask left by one position to prepare for processing the next pair of characters.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">transform_key</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span> 
-        <span class="n">first</span> <span class="o">=</span> <span class="n">lookup_table</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span>
-        <span class="n">second</span> <span class="o">=</span> <span class="n">lookup_table</span><span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span> 
+        <span class="n">first</span> <span class="o">=</span> <span class="n">lookup_table</span><span class="p">[</span><span class="nf">ord</span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span>
+        <span class="n">second</span> <span class="o">=</span> <span class="n">lookup_table</span><span class="p">[</span><span class="nf">ord</span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])]</span>
         <span class="n">val</span> <span class="o">=</span> <span class="n">first</span> <span class="o">*</span> <span class="mh">0x18</span> <span class="o">+</span> <span class="n">second</span>
-        <span class="k">if</span> <span class="p">(</span><span class="mh">0xff</span> <span class="o">&lt;</span> <span class="n">val</span><span class="p">):</span>
+        <span class="nf">if </span><span class="p">(</span><span class="mh">0xff</span> <span class="o">&lt;</span> <span class="n">val</span><span class="p">):</span>
             <span class="n">val</span> <span class="o">-=</span> <span class="mh">0x100</span>
             <span class="n">bitmask</span> <span class="o">|=</span> <span class="n">bit</span>
-        <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">hexChar</span><span class="p">(</span><span class="n">val</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="c1"># hexChar: e.g., 0xf -&gt; "F"
-</span>        <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">hexChar</span><span class="p">(</span><span class="n">val</span> <span class="o">%</span> <span class="mh">0x10</span><span class="p">)</span>
+        <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">hexChar</span><span class="p">(</span><span class="n">val</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">)</span> <span class="c1"># hexChar: e.g., 0xf -&gt; "F"
+</span>        <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nf">hexChar</span><span class="p">(</span><span class="n">val</span> <span class="o">%</span> <span class="mh">0x10</span><span class="p">)</span>
         <span class="n">bit</span> <span class="o">=</span> <span class="n">bit</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">serial</span><span class="p">,</span> <span class="n">bitmask</span>
 </code></pre></div></div>
@@ -125,7 +133,7 @@
     <span class="n">checksum</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="k">for</span> <span class="n">current_char</span> <span class="ow">in</span> <span class="n">serial</span><span class="p">:</span>
         <span class="n">shifted_mask</span> <span class="o">=</span> <span class="n">checksum</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span>
-        <span class="n">checksum</span> <span class="o">+=</span> <span class="n">shifted_mask</span> <span class="o">^</span> <span class="n">hexCharValue</span><span class="p">(</span><span class="n">current_char</span><span class="p">)</span> <span class="c1"># e.g., "F" -&gt; 0xf
+        <span class="n">checksum</span> <span class="o">+=</span> <span class="n">shifted_mask</span> <span class="o">^</span> <span class="nf">hexCharValue</span><span class="p">(</span><span class="n">current_char</span><span class="p">)</span> <span class="c1"># e.g., "F" -&gt; 0xf
 </span>    <span class="k">return</span> <span class="n">checksum</span> <span class="o">&amp;=</span> <span class="mh">0xff</span>
 </code></pre></div></div>
 <p>This basic checksum can be seen as the following sequence:</p>
@@ -140,7 +148,7 @@
 
 <p>At this point, the serial key will undergo a permutation. This shuffle operation might initially appear to swap the all key, but it actually performs a really straightforward transformation. The purpose of this operation is to rearrange the serial key, moving the middle bytes to the front and end of the key.</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">shuffle</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         <span class="n">computed_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="mh">0x11</span> <span class="o">+</span> <span class="mi">7</span><span class="p">)</span> <span class="o">%</span> <span class="mh">0x10</span><span class="p">;</span>
         <span class="n">tmp</span> <span class="o">=</span> <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
         <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">serial</span><span class="p">[</span><span class="n">computed_index</span><span class="p">];</span>
@@ -149,8 +157,8 @@
 </code></pre></div></div>
 <p>To illustrate, consider the following example with a dummy serial key:</p>
 <div align="center">
-    <p><b>Original:</b> 2244 6<span class="highlight">67</span><span class="highlight2">7 8</span>899 BBCC</p>
-    <p><b>Shuffled:</b> <span class="highlight">67</span>22 4468 99BB CC<span class="highlight2">78</span></p>
+    <p><b>Original:</b> 2244 6<span class="highlight3">67</span><span class="highlight2">7 8</span>899 BBCC</p>
+    <p><b>Shuffled:</b> <span class="highlight3">67</span>22 4468 99BB CC<span class="highlight2">78</span></p>
 </div>
 
 <p>In this shuffled version, you’ll notice that the middle bytes have been moved to the front and end of the key.</p>
@@ -161,12 +169,12 @@
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">magic_mask</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
     <span class="n">magic_number</span> <span class="o">=</span> <span class="mh">0x13ac9741</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0xf</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s">'8'</span><span class="p">):</span>
-            <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">^</span> <span class="n">magic_number</span> <span class="o">&amp;</span> <span class="mi">7</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mh">0xf</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nf">if </span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="sh">'</span><span class="s">8</span><span class="sh">'</span><span class="p">):</span>
+            <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">chr</span><span class="p">(</span><span class="nf">ord</span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">^</span> <span class="n">magic_number</span> <span class="o">&amp;</span> <span class="mi">7</span><span class="p">)</span>
             <span class="n">magic_number</span> <span class="o">=</span> <span class="n">magic_number</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span>
-        <span class="k">elif</span> <span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s">'A'</span><span class="p">):</span>
-            <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">^</span> <span class="n">i</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="nf">elif </span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="sh">'</span><span class="s">A</span><span class="sh">'</span><span class="p">):</span>
+            <span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nf">chr</span><span class="p">(</span><span class="nf">ord</span><span class="p">(</span><span class="n">serial</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">^</span> <span class="n">i</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">serial</span>
 </code></pre></div></div>
 
@@ -190,12 +198,12 @@
 
 <p>Here’s the check_serial function that encapsulates the entire verification process:</p>
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">check_serial</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
-    <span class="n">new_serial</span><span class="p">,</span> <span class="n">computed_bitmask</span> <span class="o">=</span> <span class="n">transform_key</span><span class="p">(</span><span class="n">serial</span><span class="p">)</span>
-    <span class="n">check</span> <span class="o">=</span> <span class="n">checksum</span><span class="p">(</span><span class="n">new_serial</span><span class="p">)</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">check</span> <span class="o">==</span> <span class="n">computed_bitmask</span><span class="p">):</span>
-        <span class="n">shuffled_serial</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">new_serial</span><span class="p">)</span>
-        <span class="n">masked_serial</span> <span class="o">=</span> <span class="n">magic_mask</span><span class="p">(</span><span class="n">shuffled_serial</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">masked_serial</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s">'0'</span> <span class="ow">and</span> <span class="n">masked_serial</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">'6'</span> <span class="ow">or</span> <span class="n">masked_serial</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">'7'</span><span class="p">)</span>
+    <span class="n">new_serial</span><span class="p">,</span> <span class="n">computed_bitmask</span> <span class="o">=</span> <span class="nf">transform_key</span><span class="p">(</span><span class="n">serial</span><span class="p">)</span>
+    <span class="n">check</span> <span class="o">=</span> <span class="nf">checksum</span><span class="p">(</span><span class="n">new_serial</span><span class="p">)</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">check</span> <span class="o">==</span> <span class="n">computed_bitmask</span><span class="p">):</span>
+        <span class="n">shuffled_serial</span> <span class="o">=</span> <span class="nf">shuffle</span><span class="p">(</span><span class="n">new_serial</span><span class="p">)</span>
+        <span class="n">masked_serial</span> <span class="o">=</span> <span class="nf">magic_mask</span><span class="p">(</span><span class="n">shuffled_serial</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">masked_serial</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sh">'</span><span class="s">0</span><span class="sh">'</span> <span class="ow">and</span> <span class="n">masked_serial</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sh">'</span><span class="s">6</span><span class="sh">'</span> <span class="ow">or</span> <span class="n">masked_serial</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sh">'</span><span class="s">7</span><span class="sh">'</span><span class="p">)</span>
     <span class="k">return</span> <span class="bp">False</span>
 </code></pre></div></div>
 
@@ -213,19 +221,19 @@
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">gen_serial</span><span class="p">():</span>
     <span class="n">charset</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s">'2'</span><span class="p">,</span> <span class="s">'4'</span><span class="p">,</span> <span class="s">'6'</span><span class="p">,</span> <span class="s">'7'</span><span class="p">,</span> <span class="s">'8'</span><span class="p">,</span> <span class="s">'9'</span><span class="p">,</span> <span class="s">'B'</span><span class="p">,</span> <span class="s">'C'</span><span class="p">,</span>
-    <span class="s">'D'</span><span class="p">,</span> <span class="s">'E'</span><span class="p">,</span> <span class="s">'F'</span><span class="p">,</span> <span class="s">'G'</span><span class="p">,</span> <span class="s">'H'</span><span class="p">,</span> <span class="s">'J'</span><span class="p">,</span> <span class="s">'K'</span><span class="p">,</span> <span class="s">'M'</span><span class="p">,</span> 
-    <span class="s">'N'</span><span class="p">,</span> <span class="s">'P'</span><span class="p">,</span> <span class="s">'R'</span><span class="p">,</span> <span class="s">'T'</span><span class="p">,</span> <span class="s">'V'</span><span class="p">,</span> <span class="s">'W'</span><span class="p">,</span> <span class="s">'X'</span><span class="p">,</span> <span class="s">'Z'</span><span class="p">]</span>
-    <span class="n">serial</span> <span class="o">=</span> <span class="s">""</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
-        <span class="n">serial</span> <span class="o">+=</span> <span class="n">charset</span><span class="p">[</span><span class="n">random</span><span class="p">.</span><span class="n">randrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">charset</span><span class="p">))]</span>
+    <span class="sh">'</span><span class="s">2</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">4</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">6</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">7</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">8</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">9</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">B</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">C</span><span class="sh">'</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">D</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">E</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">F</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">G</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">H</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">J</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">K</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">M</span><span class="sh">'</span><span class="p">,</span> 
+    <span class="sh">'</span><span class="s">N</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">P</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">R</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">T</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">V</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">W</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">X</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Z</span><span class="sh">'</span><span class="p">]</span>
+    <span class="n">serial</span> <span class="o">=</span> <span class="sh">""</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
+        <span class="n">serial</span> <span class="o">+=</span> <span class="n">charset</span><span class="p">[</span><span class="n">random</span><span class="p">.</span><span class="nf">randrange</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">charset</span><span class="p">))]</span>
     <span class="k">return</span> <span class="n">serial</span>
 
-<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
     <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-        <span class="n">serial</span> <span class="o">=</span> <span class="n">gen_serial</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">check_serial</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
-            <span class="k">print</span><span class="p">(</span><span class="s">"Success!</span><span class="se">\n</span><span class="s">CD key:</span><span class="se">\t</span><span class="s">"</span> <span class="o">+</span> <span class="n">serial</span><span class="p">)</span>
+        <span class="n">serial</span> <span class="o">=</span> <span class="nf">gen_serial</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nf">check_serial</span><span class="p">(</span><span class="n">serial</span><span class="p">):</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Success!</span><span class="se">\n</span><span class="s">CD key:</span><span class="se">\t</span><span class="sh">"</span> <span class="o">+</span> <span class="n">serial</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>With this, our keygen can now successfully generate valid serial keys!</p>
@@ -238,28 +246,32 @@
 <p>Thank you for joining me on this exploration.</p>
 
 <h4 id="disclaimer">Disclaimer</h4>
-<p>This article is intended for educational purposes only. The author is not responsible for any damages, unauthorized access, or illegal activities that may arise from this content. This demonstration is a product of research driven by a passion for cybersecurity.</p>]]></content><author><name></name></author><category term="keygen" /><category term="reverse engineering" /><category term="DRM" /><category term="old games" /><summary type="html"><![CDATA[Serial bypass and keygen]]></summary></entry><entry><title type="html">Breaking Widevine L3 in Android</title><link href="https://avalonswanderer.github.io/blog/2022/widevine-l3-android/" rel="alternate" type="text/html" title="Breaking Widevine L3 in Android" /><published>2022-04-06T00:00:00+02:00</published><updated>2022-04-06T00:00:00+02:00</updated><id>https://avalonswanderer.github.io/blog/2022/widevine-l3-android</id><content type="html" xml:base="https://avalonswanderer.github.io/blog/2022/widevine-l3-android/"><![CDATA[<style>
+<p>This article is intended for educational purposes only. The author is not responsible for any damages, unauthorized access, or illegal activities that may arise from this content. This demonstration is a product of research driven by a passion for cybersecurity.</p>]]></content><author><name></name></author><category term="keygen" /><category term="reverse engineering" /><category term="DRM" /><category term="old games" /><summary type="html"><![CDATA[Serial bypass and keygen]]></summary></entry><entry><title type="html">Breaking Widevine L3 in Android</title><link href="http://0.0.0.0:8080/blog/2022/widevine-l3-android/" rel="alternate" type="text/html" title="Breaking Widevine L3 in Android" /><published>2022-04-06T00:00:00+00:00</published><updated>2022-04-06T00:00:00+00:00</updated><id>http://0.0.0.0:8080/blog/2022/widevine-l3-android</id><content type="html" xml:base="http://0.0.0.0:8080/blog/2022/widevine-l3-android/"><![CDATA[<style>
 	.btn{padding: 5px 10px;}
-	h2{ margin-bottom: 4px; color:black}
-	h3{ margin-bottom: 4px; color:black}
+	h2{ margin-bottom: 4px;}
+	h3{ margin-bottom: 4px;}
 	p{ margin-top: 0px;}
 </style>
 
 <div style="text-align:center">
-    <figure>
+	
 
+
+
+<figure>
   <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
     
-    <source class="responsive-img-srcset" media="(max-width: 480px)" srcset="/assets/img/widevine_l3_broken_logo-480.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 800px)" srcset="/assets/img/widevine_l3_broken_logo-800.webp" />
-    <source class="responsive-img-srcset" media="(max-width: 1400px)" srcset="/assets/img/widevine_l3_broken_logo-1400.webp" />
+      <source class="responsive-img-srcset" srcset="/assets/img/widevine_l3_broken_logo.png" sizes="95vw" />
     
-
-    <!-- Fallback to the original file -->
-    <img src="/assets/img/widevine_l3_broken_logo.png" class="img-fluid" width="275px" height="auto" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
-
+    <img src="/assets/img/widevine_l3_broken_logo.png" class="img-fluid" width="275px" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
   </picture>
 
+  
 </figure>
 
 </div>
@@ -343,12 +355,4 @@
 <p>Yes, the usage of our tools for non-educational purpose is illegal. For instance in the United States, the <em>Digital Millennium Copyright Act (DMCA)</em> with the DMCA’s 1201 clause makes it illegal to circumvent controls preventing access to copyrighted material. Restrictions have been partially lifted recently in October 2018 by the American Library of Congress and the Copyright Office. Therefore, in theory, researchers can now freely investigate and publish security flaws on DRM solutions. In Europe, quite the same law is applied with the <em>European Union Copyright Directive (EUCD)</em>.</p>
 
 <h3 id="have-vendors-responded-to-this-vulnerability">Have vendors responded to this vulnerability?</h3>
-<p>Our findings have been timely reported to all concerned parties following their responsible disclosure process. Google assigned the CVE ID <a href="https://www.cve.org/CVERecord?id=CVE-2021-0639">‘CVE-2021-0639’</a> for us linked to the <a href="https://source.android.com/security/bulletin/2021-08-01#widevine">Android Security Bulletin August 2021</a>.</p>
-
-<h3 id="how-can-i-contact-you">How can I contact you?</h3>
-
-<p>You can contact me via mail or twitter:</p>
-
-<ul>
-  <li>Gwendal Patat, University of Rennes 1, France, <a href="https://twitter.com/avalonswanderer">@avalonswanderer</a>, gwendal.patat@irisa.fr</li>
-</ul>]]></content><author><name></name></author><category term="Widevine" /><category term="Android" /><category term="Digital Right Management" /><category term="DRM" /><category term="OTT" /><summary type="html"><![CDATA[Widevine L3 Android keybox recovery]]></summary></entry></feed>
+<p>Our findings have been timely reported to all concerned parties following their responsible disclosure process. Google assigned the CVE ID <a href="https://www.cve.org/CVERecord?id=CVE-2021-0639">‘CVE-2021-0639’</a> for us linked to the <a href="https://source.android.com/security/bulletin/2021-08-01#widevine">Android Security Bulletin August 2021</a>.</p>]]></content><author><name></name></author><category term="Widevine" /><category term="Android" /><category term="Digital Right Management" /><category term="DRM" /><category term="OTT" /><summary type="html"><![CDATA[Widevine L3 Android keybox recovery]]></summary></entry></feed>
