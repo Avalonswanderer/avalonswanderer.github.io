@@ -1,0 +1,193 @@
+{
+  "basics": {
+    "name": "",
+    "label": "Enseignant-Chercheur",
+    "image": "",
+    "email": "",
+    "phone": "",
+    "url": "",
+    "summary": "Enseignant-Chercheur at the University of Rennes and researcher at IRISA (SPICY team). Works on vulnerability research through reverse engineering; teaches and mentors students in computer security.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Rennes",
+      "countryCode": "FR",
+      "region": "Brittany"
+    },
+    "profiles": []
+  },
+  "work": [
+    {
+      "name": "University of Rennes / IRISA (SPICY)",
+      "position": "Enseignant-Chercheur (Researcher & Lecturer)",
+      "url": "https://www.univ-rennes.fr/",
+      "startDate": "2025-09-01",
+      "endDate": "",
+      "summary": "Vulnerability research through reverse engineering within the SPICY team at IRISA; teaching responsibilities at the University of Rennes.",
+      "highlights": [
+        "Reverse engineering and vulnerability discovery",
+        "Software and systems security",
+        "Teaching and student supervision"
+      ]
+    },
+    {
+      "name": "Fraunhofer SIT, Darmstadt, Germany",
+      "position": "Postdoctoral Researcher",
+      "url": "https://www.sit.fraunhofer.de/",
+      "startDate": "2024-01-01",
+      "endDate": "2025-08-31",
+      "summary": "Security research in the SSE department.",
+      "highlights": [
+        "Worked on binary lifting and native code analysis for security applications, and contributed my expertise to industry projects as a security researcher."
+      ]
+    },
+    {
+      "name": "IRISA, EMSEC Team, Rennes, France",
+      "position": "Research Intern",
+      "startDate": "2020-04-01",
+      "endDate": "2020-09-30",
+      "summary": "Analysis and exploitation of cryptographic implementations within ARM TrustZone.",
+      "highlights": [
+        "Reverse engineering of mobile cryptographic components",
+        "Proof-of-Concept exploitation"
+      ]
+    },
+    {
+      "name": "IRISA, EMSEC Team, Rennes, France",
+      "position": "Research Intern",
+      "startDate": "2019-04-01",
+      "endDate": "2019-09-30",
+      "summary": "Research on the U2F protocol and its security implementations in the wild.",
+      "highlights": [
+        "Protocol analysis of U2F",
+        "Empirical security assessment"
+      ]
+    },
+    {
+      "name": "IRIT, STORM Team, Toulouse, France",
+      "position": "Research Intern",
+      "startDate": "2018-04-01",
+      "endDate": "2018-08-31",
+      "summary": "Implementation of a visual light path analysis tool.",
+      "highlights": [
+        "Computer graphics tooling",
+        "Software prototyping"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Université Rennes 1, Rennes, France",
+      "location": "Rennes, France",
+      "url": "https://www.univ-rennes.fr/",
+      "area": "Computer Security",
+      "studyType": "PhD in Computer Science",
+      "startDate": "2020-10-01",
+      "endDate": "2023-12-31",
+      "score": "",
+      "courses": []
+    },
+    {
+      "institution": "Université Rennes 1, Rennes, France",
+      "location": "Rennes, France",
+      "url": "https://www.univ-rennes.fr/",
+      "area": "Cybersecurity",
+      "studyType": "Master's Degree",
+      "startDate": "2018-09-01",
+      "endDate": "2020-09-30",
+      "score": "",
+      "courses": []
+    },
+    {
+      "institution": "Université Toulouse III Paul Sabatier, Toulouse, France",
+      "location": "Toulouse, France",
+      "url": "https://www.univ-tlse3.fr/",
+      "area": "Computer Science",
+      "studyType": "Bachelor's Degree",
+      "startDate": "2015-09-01",
+      "endDate": "2018-06-30",
+      "score": "",
+      "courses": []
+    }
+  ],
+  "awards": [
+    {
+      "title": "University of Rennes Foundation PhD Thesis Award (2nd place)",
+      "date": "2024-06-01",
+      "awarder": "Fondation Université de Rennes",
+      "url": "",
+      "summary": ""
+    },
+    {
+      "title": "Mozilla Security Bug Bounty Program Hall of Fame",
+      "date": "2023-01-01",
+      "awarder": "Mozilla",
+      "url": "",
+      "summary": ""
+    },
+    {
+      "title": "Google Hall of Fame",
+      "date": "2021-01-01",
+      "awarder": "Google",
+      "url": "",
+      "summary": ""
+    },
+    {
+      "title": "Netflix BugHunter Hall of Fame",
+      "date": "2021-01-01",
+      "awarder": "Netflix",
+      "url": "",
+      "summary": ""
+    }
+  ],
+  "publications": [
+    {
+      "name": "Exploring Widevine for Fun and Profit",
+      "publisher": "WOOT 2022",
+      "releaseDate": "2022-08-01",
+      "url": "",
+      "summary": ""
+    },
+    {
+      "name": "WideLeak: How Over-the-Top Platforms Fail in Android",
+      "publisher": "DSN 2022",
+      "releaseDate": "2022-06-01",
+      "url": "",
+      "summary": ""
+    },
+    {
+      "name": "Your DRM Can Watch You Too: Exploring the Privacy Implications of Browsers (mis)Implementations of Widevine EME",
+      "publisher": "PETS 2023",
+      "releaseDate": "2023-07-01",
+      "url": "",
+      "summary": ""
+    },
+    {
+      "name": "Formal Security Analysis of Widevine through the W3C EME Standard",
+      "publisher": "USENIX Security 2024",
+      "releaseDate": "2024-08-01",
+      "url": "",
+      "summary": ""
+    }
+  ],
+  "skills": [
+    {
+      "name": "Security Research",
+      "level": "",
+      "icon": "",
+      "keywords": [
+        "Reverse Engineering",
+        "Vulnerability Research",
+        "Binary Analysis",
+        "DRM Systems",
+        "Program Analysis"
+      ]
+    }
+  ],
+  "languages": [],
+  "interests": [],
+  "volunteer": [],
+  "certificates": [],
+  "references": [],
+  "projects": []
+}
