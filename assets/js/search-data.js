@@ -24,7 +24,7 @@ ninja.data = [{
             window.location.href = "/publications/";
           },
         },{id: "nav-lectures",
-          title: "Lectures",
+          title: "lectures",
           description: "",
           section: "Navigation",
           handler: () => {
@@ -66,7 +66,12 @@ ninja.data = [{
             window.location.href = "/blog/2022/widevine-l3-android/";
           
         },
-      },{id: "news-rewarded-by-netflix-bug-bounty-program-and-google-bughunter-program-related-cve-and-android-security-bulletin-have-been-published",
+      },{id: "lectures-network-security-nfs",
+          title: 'Network Security (NFS)',
+          description: "",
+          section: "Lectures",handler: () => {
+              window.location.href = "/lectures/nfs/";
+            },},{id: "news-rewarded-by-netflix-bug-bounty-program-and-google-bughunter-program-related-cve-and-android-security-bulletin-have-been-published",
           title: 'Rewarded by Netflix Bug Bounty program and Google BugHunter program. Related CVE and...',
           description: "",
           section: "News",},{id: "news-rewarded-by-mozilla-bug-bounty-program",
