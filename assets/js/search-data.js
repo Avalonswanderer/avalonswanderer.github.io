@@ -71,6 +71,11 @@ ninja.data = [{
           description: "",
           section: "Lectures",handler: () => {
               window.location.href = "/lectures/nfs/";
+            },},{id: "lectures-penetration-testing-pentest",
+          title: 'Penetration Testing (PENTEST)',
+          description: "",
+          section: "Lectures",handler: () => {
+              window.location.href = "/lectures/pentest/";
             },},{id: "news-rewarded-by-netflix-bug-bounty-program-and-google-bughunter-program-related-cve-and-android-security-bulletin-have-been-published",
           title: 'Rewarded by Netflix Bug Bounty program and Google BugHunter program. Related CVE and...',
           description: "",
