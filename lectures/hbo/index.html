@@ -17,7 +17,7 @@
   
   
     
-      Network Security (NFS) | Gwendal Patat
+      Hack ta Boîte (HBO) | Gwendal Patat
     
   
 </title>
@@ -57,7 +57,7 @@
   <link rel="shortcut icon" href="/assets/img/favicon2.png?9663468a04880e8db2ca9b148a545dd1">
 
 <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
-<link rel="canonical" href="http://0.0.0.0:8080/lectures/nfs/">
+<link rel="canonical" href="http://0.0.0.0:8080/lectures/hbo/">
 
 
   <!-- Dark Mode -->
@@ -245,7 +245,7 @@
 
 <div class="post">
   <header class="post-header">
-    <h1 class="post-title">Network Security (NFS)</h1>
+    <h1 class="post-title">Hack ta Boîte (HBO)</h1>
     <p class="post-description"></p>
   </header>
 
@@ -253,82 +253,31 @@
     <p>M1 SLM Cyberschool.
 2025.</p>
 
+<p>This course is developed in collaboration with Daniel De Almeida Braga and is structured into two components: Web and System. I am responsible for the System component.</p>
+
 <h3 id="syllabus">Syllabus</h3>
 
+<h4 id="partie-système">Partie Système</h4>
+
 <ul>
   <li>
-    <p><strong>Week 1:</strong> Network Fundamentals Refresher <a href="../../assets/pdf/nfs/Network%20Security-%2001%20-%20Network%20Fundamentals%20Refresher.pdf"><i class="fa-solid fa-file-pdf"></i></a></p>
+    <p><strong>Week 1:</strong> Pwning a Linux Web server <a href="../../assets/pdf/hbo/HBO_Pwning_a_Linux_Web_server.pdf"><i class="fa-solid fa-file-pdf"></i></a></p>
   </li>
   <li>
-    <p><strong>Week 2:</strong> LAN, VLAN, War in the LAN? <a href="../../assets/pdf/nfs/Network%20Security-%2002%20-%20LAN,%20VLAN,%20What%20LAN.pdf"><i class="fa-solid fa-file-pdf"></i></a></p>
+    <p><strong>Week 2:</strong> Windows Security Introduction <a href="../../assets/pdf/hbo/HBO_Windows_Security_Introduction.pdf"><i class="fa-solid fa-file-pdf"></i></a></p>
   </li>
   <li>
-    <p><strong>Week 3:</strong> From Bits to Broadcast: IP Unmasked <a href="../../assets/pdf/nfs/Network%20Security-%2003%20-%20From%20Bits%20to%20Broadcast.pdf"><i class="fa-solid fa-file-pdf"></i></a></p>
+    <p><strong>Week 3:</strong> Windows and Kerberos <a href="../../assets/pdf/hbo/HBO_Kerberos.pdf"><i class="fa-solid fa-file-pdf"></i></a></p>
   </li>
-  <li>
-    <p><strong>Week 4:</strong> SYN City: A TCP/UDP Story <a href="../../assets/pdf/nfs/Network%20Security-%2004%20-%20SYN%20City_%20A%20TCP_UDP%20Story.pdf"><i class="fa-solid fa-file-pdf"></i></a></p>
-  </li>
-  <li>
-    <p><strong>Week 5:</strong> Have you heard of VPNs? <a href="../../assets/pdf/nfs/Network%20Security%20-%2005%20-%20Have%20you%20heard%20of%20VPNs.pdf"><i class="fa-solid fa-file-pdf"></i></a></p>
-  </li>
-  <li>
-    <p><strong>Week 6:</strong> IP Shortage? NAT on my watch <a href="../../assets/pdf/nfs/Network%20Security-%2006%20-%20IP%20Shortage_%20NAT%20on%20my%20watch.pdf"><i class="fa-solid fa-file-pdf"></i></a></p>
-  </li>
-  <li>
-    <p><strong>Week 7:</strong> Cache me if you can: DNS Resolution <a href="../../assets/pdf/nfs/Network%20Security-%2007%20-%20Cache%20me%20if%20you%20Can.pdf"><i class="fa-solid fa-file-pdf"></i></a></p>
-  </li>
-  <li>
-    <p><strong>Week 8:</strong> ACLs: Our list of Allies grows thin <a href="../../assets/pdf/nfs/Network%20Security%20-%2008%20-%20ACLs_%20Our%20list%20of%20Allies%20grows%20thin.pdf"><i class="fa-solid fa-file-pdf"></i></a> <a href="../../assets/zip/nfs/acls.pkt"><i class="fa-solid fa-file-code"></i></a></p>
-  </li>
-  <li>
-    <p><strong>Week 9:</strong> Firewall of Udûn: You shall not pass <a href="../../assets/pdf/nfs/Network%20Security-%2009%20-%20Firewall%20of%20Udun.pdf"><i class="fa-solid fa-file-pdf"></i></a></p>
-  </li>
-  <li>
-    <p><strong>Week 10:</strong> Introduction to security and cryptography: TLS by Aurore Guillevic <a href="../../assets/pdf/nfs/CM-2025-M1-rennes-cyberschool-networks-for-security-TLS-en.pdf"><i class="fa-solid fa-file-pdf"></i></a></p>
-  </li>
-</ul>
-
-<h3 id="other-resources">Other resources</h3>
-
-<h5 id="tds">TDs</h5>
-<ul>
-  <li>Packet Analysis, ARP, CAM <a href="../../assets/pdf/nfs/NFS_TD_1.pdf"><i class="fa-solid fa-file-pdf"></i></a>
-</li>
-  <li>Mask, Routing, and Crypto <a href="../../assets/pdf/nfs/NFS_TD_2.pdf"><i class="fa-solid fa-file-pdf"></i></a>
-</li>
-</ul>
-
-<h5 id="tps">TPs</h5>
-<ul>
-  <li>Wireshark Lab <a href="../../assets/pdf/nfs/NFS_Lab_Session_1.pdf"><i class="fa-solid fa-file-pdf"></i></a>
-</li>
-  <li>VLAN Lab <a href="../../assets/pdf/nfs/NFS_Lab_Session_2.pdf"><i class="fa-solid fa-file-pdf"></i></a>
-</li>
-  <li>UDP/TCP Lab <a href="../../assets/pdf/nfs/NFS_Lab_Session_3.pdf"><i class="fa-solid fa-file-pdf"></i></a> <a href="../../assets/zip/nfs/tp3_docker.tar.gz"><i class="fa-solid fa-file-zipper"></i></a>
-</li>
-  <li>Hijacking and Wireguard Lab <a href="../../assets/pdf/nfs/NFS_Lab_Session_4.pdf"><i class="fa-solid fa-file-pdf"></i></a> <a href="../../assets/zip/nfs/tp4_docker.tar.gz"><i class="fa-solid fa-file-zipper"></i></a>
-</li>
-  <li>NAT and PAT Lab <a href="../../assets/pdf/nfs/NFS_Lab_Session_5.pdf"><i class="fa-solid fa-file-pdf"></i></a>
-</li>
-  <li>Firewalling and Bypass <a href="../../assets/pdf/nfs/NFS_Lab_Session_6.pdf"><i class="fa-solid fa-file-pdf"></i></a> <a href="../../assets/zip/nfs/tp6_docker.tar.gz"><i class="fa-solid fa-file-zipper"></i></a>
-</li>
-</ul>
-
-<h5 id="bonus">Bonus</h5>
-<ul>
-  <li>Cisco Cheatsheet <a href="../../assets/pdf/nfs/Cisco_CheatSheet.pdf"><i class="fa-solid fa-file-pdf"></i></a>
-</li>
 </ul>
 
 <h3 id="acknowledgement-and-resources">Acknowledgement and Resources</h3>
 
 <ul>
+  <li><a href="https://book.hacktricks.wiki/en/" rel="external nofollow noopener" target="_blank">Hacktricks</a></li>
   <li>
-<em>Computer Networking: A Top-down Approach</em> by James F. Kurose, Keith W. Ross.</li>
-  <li>
-<em>Internet Security: A Hands-on Approach (Computer &amp; Internet Security) 3rd ed.</em> by Wenliang Du.</li>
-  <li>External materials from Mathieu Goessens.</li>
-  <li>External materials from Mohamed Sabt.</li>
+<em>Windows Internals, Part 1, 7th Edition</em> by Pavel Yosifovich, Alex Ionescu, Mark E. Russinovich, and David A. Solomon</li>
+  <li>External materials from Daniel De Almeida Braga.</li>
 </ul>
 
   </article>

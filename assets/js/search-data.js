@@ -59,7 +59,12 @@ ninja.data = [{
             window.location.href = "/blog/2022/widevine-l3-android/";
           
         },
-      },{id: "lectures-network-security-nfs",
+      },{id: "lectures-hack-ta-boîte-hbo",
+          title: 'Hack ta Boîte (HBO)',
+          description: "",
+          section: "Lectures",handler: () => {
+              window.location.href = "/lectures/hbo/";
+            },},{id: "lectures-network-security-nfs",
           title: 'Network Security (NFS)',
           description: "",
           section: "Lectures",handler: () => {
