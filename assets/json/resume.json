@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "",
-    "label": "Enseignant-Chercheur",
+    "label": "Assistant Professor",
     "image": "",
     "email": "",
     "phone": "",
     "url": "",
-    "summary": "Enseignant-Chercheur at the University of Rennes and researcher at IRISA (SPICY team). Works on vulnerability research through reverse engineering; teaches and mentors students in computer security.",
+    "summary": "Assistant Professor at the University of Rennes and researcher at IRISA (SPICY team). Works on vulnerability research through reverse engineering; teaches and mentors students in computer security.",
     "location": {
       "address": "",
       "postalCode": "",
@@ -19,7 +19,7 @@
   "work": [
     {
       "name": "University of Rennes / IRISA (SPICY)",
-      "position": "Enseignant-Chercheur (Researcher & Lecturer)",
+      "position": "Assistant Professor (Researcher & Lecturer)",
       "url": "https://www.univ-rennes.fr/",
       "startDate": "2025-09-01",
       "endDate": "",
